@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Energy.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -16, 0, 0, 0, 0, 0, -12, 0, 0, 0, 0, 0, 0 )
+}
+_sections_unfolded = [ "Resource" ]
+
+[node name="Energy" type="Path2D"]
+
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z" ]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+position = Vector2( 0, -16 )
+rotation = 3.14159
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+_sections_unfolded = [ "Transform", "Visibility", "Z" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="PathFollow2D"]
+
+position = Vector2( 5.96046e-08, 1 )
+polygon = PoolVector2Array( 5.99287, -8.99997, 8.99287, -5.99997, 9.98548, -2.07129, 10.014, 1.92861, 9.04257, 5.93564, 6.06405, 8.95697, 2.07129, 9.98548, -1.92861, 10.014, -5.93564, 9.04257, -8.95697, 6.06405, -9.98548, 2.07129, -10.014, -1.92861, -9.04257, -5.93564, -6.06405, -8.95697, -2.07129, -9.98548, 1.92861, -10.014 )
+uv = PoolVector2Array(  )
+color = Color( 0, 1, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0.0071339, -2.53916e-05 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 1.0
+_sections_unfolded = [ "Invert", "Transform", "Visibility" ]
+
+[node name="Tween" type="Tween" parent="."]
+
+playback_process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_fly_end"]
+
+

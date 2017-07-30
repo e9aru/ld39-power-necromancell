@@ -1,0 +1,359 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Cell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 0.847953, 1 )
+colors = PoolColorArray( 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+
+gradient = SubResource( 1 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 3.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.0
+angular_velocity = 7.80523e-43
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 2.0
+scale_random = 0.0
+color_ramp = SubResource( 2 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Color", "Damping", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 48
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="CircleShape2D" id=6]
+
+custom_solver_bias = 0.0
+radius = 56.0
+
+[sub_resource type="DynamicFont" id=7]
+
+size = 36
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "heal"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("FloatingLabel:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FloatingLabel:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -300, -100 ), Vector2( -300, -200 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera2D/Mask:color")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0, 0 ), Color( 0, 1, 0, 0.0784314 ), Color( 0, 1, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera2D/Mask:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Player" groups=[
+"player",
+] instance=ExtResource( 1 )]
+
+z = 1000
+collision_layer = 6
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="."]
+
+autoplay = "idle"
+
+[node name="Body" parent="."]
+
+_sections_unfolded = [ "Transform", "Z" ]
+
+[node name="Alive" parent="Body"]
+
+editor/display_folded = false
+
+[node name="Polygon2D3" parent="Body/Alive"]
+
+color = Color( 0, 1, 0, 1 )
+
+[node name="Polygon2D5" parent="Body/Alive"]
+
+color = Color( 0, 1, 0, 1 )
+
+[node name="Polygon2D4" parent="Body/Alive"]
+
+color = Color( 0, 1, 0, 1 )
+
+[node name="Particles2D" type="Particles2D" parent="Body/Alive"]
+
+position = Vector2( 6, -20 )
+emitting = true
+amount = 36
+lifetime = 0.6
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 3 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform" ]
+
+[node name="Particles2D2" type="Particles2D" parent="Body/Alive"]
+
+position = Vector2( -7, -20 )
+emitting = true
+amount = 36
+lifetime = 0.6
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 3 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform" ]
+
+[node name="Fixed" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z" ]
+
+[node name="PowerLabel" type="Label" parent="Fixed"]
+
+margin_left = 4.0
+margin_top = -2.0
+margin_right = 1028.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 1024, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "xxx"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect", "custom_colors", "custom_fonts" ]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+offset = Vector2( 0, -170 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 4.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Smoothing" ]
+
+[node name="ActionLabel" type="Label" parent="Camera2D"]
+
+margin_left = -512.0
+margin_top = -312.0
+margin_right = 512.0
+margin_bottom = -212.0
+rect_min_size = Vector2( 1024, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect", "custom_fonts" ]
+
+[node name="Mask" type="Polygon2D" parent="Camera2D"]
+
+visible = false
+position = Vector2( -1000, -1000 )
+polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 2000, 0, 2000 )
+uv = PoolVector2Array(  )
+color = Color( 0, 1, 0, 0 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 5
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+position = Vector2( 0, -31 )
+shape = SubResource( 6 )
+
+[node name="FloatingLabel" type="Label" parent="."]
+
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -300.0
+margin_top = -100.0
+margin_right = 300.0
+margin_bottom = -47.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0.542969, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 1, 0, 1 )
+custom_constants/shadow_offset_x = 0
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Hint", "Rect", "Visibility", "custom_colors", "custom_constants" ]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/heal = SubResource( 8 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+
+

@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Global.gd" type="Script" id=1]
+[ext_resource path="res://sounds/ost.wav" type="AudioStream" id=2]
+
+[sub_resource type="AudioStreamSample" id=1]
+
+format = 0
+loop_mode = 0
+loop_begin = 0
+loop_end = 0
+mix_rate = 44100
+stereo = false
+data = PoolByteArray(  )
+_sections_unfolded = [ "Resource" ]
+
+[node name="Node" type="Node"]
+
+script = ExtResource( 1 )
+
+[node name="Sfx0" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Sfx1" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Sfx2" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Sfx3" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Sfx4" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Sfx5" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Sfx6" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Sfx7" type="AudioStreamPlayer" parent="."]
+
+stream = SubResource( 1 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="OST" type="AudioStreamPlayer" parent="."]
+
+stream = ExtResource( 2 )
+volume_db = -10.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+

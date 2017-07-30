@@ -1,0 +1,567 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Cell.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "die"
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Alive:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Dead:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:rotation_deg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "idle"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Polygon2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Polygon2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "live"
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Alive:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Dead:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:rotation_deg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "move"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Polygon2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -5 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Polygon2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ), Vector2( 0, 0 ), Vector2( 0, -5 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "ressurect"
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Alive:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Dead:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:rotation_deg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 19, 35 )
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Gradient" id=7]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+
+gradient = SubResource( 7 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=9]
+
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 1, 8, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 36.0
+flatness = 0.0
+gravity = Vector3( 0, -80, 0 )
+initial_velocity = 48.0
+initial_velocity_random = 0.0
+angular_velocity = 7.93135e-43
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 8.0
+scale_random = 0.6
+color_ramp = SubResource( 8 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angular Velocity", "Color", "Damping", "Emission Shape", "Gravity", "Initial Velocity", "Linear Accel", "Scale", "Spread" ]
+
+[node name="Cell" type="KinematicBody2D" groups=[
+"cell",
+]]
+
+z = 1
+input_pickable = false
+collision_layer = 2
+collision_mask = 3
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z", "collision" ]
+hpMax = 10.0
+alive = true
+energyPerHit = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/die = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/live = SubResource( 3 )
+anims/move = SubResource( 4 )
+anims/ressurect = SubResource( 5 )
+next/die = "idle"
+next/live = "idle"
+next/ressurect = "idle"
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Tween" type="Tween" parent="."]
+
+playback_process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Body" type="Polygon2D" parent="."]
+
+editor/display_folded = true
+position = Vector2( 0, -18 )
+polygon = PoolVector2Array(  )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 18 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="Body"]
+
+position = Vector2( 0, 13 )
+polygon = PoolVector2Array( -19, -70, -7, -70, -7, -75, 7, -75, 7, -70, 19, -70, 19, -5, -19, -5 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 5 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D2" type="Polygon2D" parent="Body"]
+
+polygon = PoolVector2Array( -5, -5, -5, 0, -8, 0, -8, -5 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 18 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D3" type="Polygon2D" parent="Body"]
+
+polygon = PoolVector2Array( -5, -5, -5, 0, -8, 0, -8, -5 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 13, 18 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="DisplayBg" type="Polygon2D" parent="Body"]
+
+position = Vector2( 0, -10 )
+polygon = PoolVector2Array( -14, -54, 14, -54, 14, -17, -14, -17 )
+uv = PoolVector2Array(  )
+color = Color( 0.784314, 0.784314, 0.784314, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 17 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Display" type="Polygon2D" parent="Body"]
+
+position = Vector2( 0, -10 )
+polygon = PoolVector2Array( -14, -56, 14, -56, 14, -19, -14, -19 )
+uv = PoolVector2Array(  )
+color = Color( 0, 1, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 19 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Alive" type="Node2D" parent="Body"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 0, 16 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Polygon2D3" type="Polygon2D" parent="Body/Alive"]
+
+position = Vector2( 6, -19 )
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 1, -10, 4, -10, 6, -6, 6, 0, 4, 4, 1, 4, -1, 0, -1, -6 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -2, 4 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D5" type="Polygon2D" parent="Body/Alive"]
+
+position = Vector2( -7, -19 )
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 0, -10, 3, -10, 5, -6, 5, 0, 3, 4, 0, 4, -2, 0, -2, -6 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -1, 4 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D4" type="Polygon2D" parent="Body/Alive"]
+
+position = Vector2( 0, -9 )
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 5, 2, 5, 6, 4, 8, 2, 10, -2, 10, -4, 8, -5, 6, -5, 2 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, -8 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Dead" type="Node2D" parent="Body"]
+
+editor/display_folded = true
+position = Vector2( 0, 18 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Polygon2D8" type="Polygon2D" parent="Body/Dead"]
+
+position = Vector2( 0, -13 )
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 4, 2, 4, 6, -4, 6, -4, 2 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, -4 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+
+[node name="Polygon2D9" type="Polygon2D" parent="Body/Dead"]
+
+position = Vector2( -8, -18.9996 )
+rotation = 0.785398
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 4, 2, 4, 6, -4, 6, -4, 2 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, -4 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D10" type="Polygon2D" parent="Body/Dead"]
+
+position = Vector2( -8, -18.9996 )
+rotation = -0.785398
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 4, 2, 4, 6, -4, 6, -4, 2 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, -4 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D11" type="Polygon2D" parent="Body/Dead"]
+
+position = Vector2( 8.00001, -18.9996 )
+rotation = 0.785398
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 4, 2, 4, 6, -4, 6, -4, 2 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, -4 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D12" type="Polygon2D" parent="Body/Dead"]
+
+position = Vector2( 8.00001, -18.9996 )
+rotation = -0.785398
+scale = Vector2( 1, 0.5 )
+polygon = PoolVector2Array( 4, 2, 4, 6, -4, 6, -4, 2 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, -4 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Charger" type="Polygon2D" parent="Body"]
+
+position = Vector2( 0, -52 )
+polygon = PoolVector2Array( -3, 0, 3, 0, 3, 10, -3, 10 )
+uv = PoolVector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, -5 )
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+position = Vector2( 0, -35 )
+shape = SubResource( 6 )
+one_way_collision = true
+
+[node name="Steps" type="Particles2D" parent="."]
+
+position = Vector2( 4.37114e-08, -6 )
+rotation = -1.5708
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.08
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 9 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time", "Transform" ]
+
+
