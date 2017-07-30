@@ -10,7 +10,7 @@ Cheers
 ### Description
 ![cover640x512.png](///raw/8f8/9/z/5ba3.png)
 
-You playing as a necromancer battery cell, get as many ~~souls~~ power to increase your A-h.
+You are playing as a necromancer battery cell, get as many ~~souls~~ power to increase your A-h.
 
 
 ## Features:
@@ -25,8 +25,8 @@ You playing as a necromancer battery cell, get as many ~~souls~~ power to increa
 ## Controls:
 * arrow keys - move and jump
 * esc - reset
-* space - action (ressurect / attack)
-* enter - kill army
+* space - action (resurrect / attack)
+* enter - kill your followers
 
 
 ## Links

@@ -73,7 +73,7 @@ func _action():
 			# Reset feastCD if this is first zombie
 			if !get_tree().get_nodes_in_group(GROUP_NAME_ZOMBIE).size(): feastCD = 0
 
-			target._ressurect()
+			target._resurrect()
 			_remove_from_targets(target)
 
 
@@ -127,7 +127,7 @@ func _update_action_actionLabel():
 		if target.alive:
 			if get_tree().get_nodes_in_group(GROUP_NAME_ZOMBIE).size(): actionLabel.set_text('ATTACK')
 		else:
-			actionLabel.set_text('RESSURECT')
+			actionLabel.set_text('RESURRECT')
 
 
 func _update_power_label():

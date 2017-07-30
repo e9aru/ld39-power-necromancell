@@ -6,7 +6,7 @@ const DEAD_HEIGHT = 0
 var playerSpawnPosition = null
 var playerHp = null
 
-var sfxNames = ['bubblein', 'bubbleout', 'checkpoint', 'damage', 'dead', 'jump', 'move', 'ressurect']
+var sfxNames = ['bubblein', 'bubbleout', 'checkpoint', 'damage', 'dead', 'jump', 'move', 'resurrect']
 var sfxVolumes = [-4, -6, 0, 0, 0, -8, -10, 0]
 var sfxResources = []
 

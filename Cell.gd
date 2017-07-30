@@ -177,14 +177,14 @@ func _die(silence = false):
 	if !silence: Global.sfx('dead')
 
 
-func _ressurect():
+func _resurrect():
 	add_to_group(GROUP_NAME_ZOMBIE)
 
 	if alive: _die(true)
 
 	_update_collision_layer()
-	animator.play('ressurect')
-	Global.sfx('ressurect')
+	animator.play('resurrect')
+	Global.sfx('resurrect')
 
 
 func _get_follow_queue_index():

@@ -868,7 +868,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Press space to ressurect a battery cell
+text = "Press space to resurrect a battery cell
  (must be near corpse)"
 align = 1
 percent_visible = 1.0
@@ -952,7 +952,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "When you have a army press Space 
+text = "When you have a army press Space
 to attack healthy batteries,
 and steal their power!"
 align = 1
