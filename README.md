@@ -8,8 +8,6 @@ Cheers
 
 
 ### Description
-![cover640x512.png](///raw/8f8/9/z/5ba3.png)
-
 You are playing as a necromancer battery cell, get as many ~~souls~~ power to increase your A-h.
 
 
